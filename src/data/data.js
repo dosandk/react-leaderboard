@@ -1,9 +1,9 @@
 export const userData = [{
-    "rank": 3,
-    "points": 3123,
-    "name": "Marlana J. Huff",
-    "age": 41
-  },
+  "rank": 3,
+  "points": 3123,
+  "name": "Marlana J. Huff",
+  "age": 41
+},
   {
     "rank": 10,
     "points": 45345,

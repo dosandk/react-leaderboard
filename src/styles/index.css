@@ -5,19 +5,24 @@ body {
 }
 
 button {
-  margin-top: 80px;
-  margin: 2px;
+  margin: 20px 2px 30px;
+}
+
+.content {
+  margin-top: 30px;
 }
 
 table.table {
   width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 5%;
+  margin: 0 10% 5%;
 }
 
 .table td, .table th {
    text-align: center;
+}
+
+.table th:first-letter {
+  text-transform: uppercase;
 }
 
 header {

@@ -1,21 +1,39 @@
-import React, {Component} from 'react';
-import {usersJSON} from '../data';
+import React, { Component } from 'react';
 
 export default class Table extends Component {
-    render() {
-
-        return (<div>
-            <table className="table table-striped">
-                <thead>
-                <tr key="head">
-                    <th>Age</th>
-                    <th>Name</th>
-                    <th>Points</th>
-                    <th>Rank</th>
-                </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>)
-    }
+  renderTableHeader(users) {
+    let title = Object.keys(users[0]);
+    let thead = title.map((key, index) => <th key={index}>{key}</th>);
+    return <tr>{thead}</tr>;
+  }
+  
+  renderTableData(users) {
+    return users.map((user, index) => {
+      let { rank, points, name, age } = user;
+      return (
+        <tr key={index}>
+          <td>{rank}</td>
+          <td>{points}</td>
+          <td>{name}</td>
+          <td>{age}</td>
+        </tr>
+      )
+    })
+  }
+  
+  render() {
+    const { filteredData } = this.props;
+    if(!filteredData.length) return (<div className='content'>No relevant data</div>);
+    
+    return (
+      <div className='content'>
+        <table className='table table-striped'>
+          <tbody>
+          {this.renderTableHeader(filteredData)}
+          {this.renderTableData(filteredData)}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
 }
