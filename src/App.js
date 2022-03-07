@@ -6,6 +6,7 @@ import Rank from './components/Rank';
 import Table from './components/Table';
 
 export default class App extends Component {
+  
 
   render() {
     return (
