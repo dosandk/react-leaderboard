@@ -3,20 +3,34 @@ import {usersJSON} from '../data';
 
 export default class Table extends Component {
 
-    constructor(){
+    constructor()
+    {
         super();
         this.state ={
             contacts: usersJSON
         };
     }
-//////
 
+
+
+    componentDidUpdate(prevProps,prevState) {
+       if(this.props.altered !== prevProps.altered) {
+
+        if(this.props.altered == "name") { this.sortByName() }
+        if(this.props.altered == "age") { this.sortByAge() }
+        if(this.props.altered == "points") { this.sortByPoints() }
+        if(this.props.altered == "rank") { this.sortByRank() }
+       }
+
+
+    }
     sortByAge=()=>{
-
+        
         let sortedProductsAsc;
         sortedProductsAsc= this.state.contacts.sort((a,b)=>{
            return parseInt(a.age)  - parseInt(b.age);
         })
+        
 
         this.setState({
             contacts:sortedProductsAsc
@@ -59,15 +73,17 @@ export default class Table extends Component {
 //////
 
     render() {
-
-        return (<div>
+        //  {console.log(this.props.altered)}
+        return (
+            
+        <div>
             <table className="table table-striped">
                 <thead>
                     <tr key="head">
-                        <th onClick={this.sortByAge}>Age</th>
-                        <th onClick={this.sortByName}>Name</th>
-                        <th onClick ={this.sortByPoints}>Points</th>
-                        <th onClick={this.sortByRank}>Rank</th>
+                        <th>Age</th>
+                        <th>Name</th>
+                        <th>Points</th>
+                        <th>Rank</th>
                     </tr>
                 </thead>
                 <tbody>

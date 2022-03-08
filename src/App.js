@@ -7,23 +7,37 @@ import Table from './components/Table';
 
 export default class App extends Component {
   
+  constructor() {
+    super()
+    this.state ={
+      sortBy: ""
+    }
+  }
+
+  sortedBy = (event) =>{
+    this.setState({
+      sortBy:event.target.name
+    })
+  }
 
   render() {
+
     return (
-      <div className="text-center buttons">
-        <header className="text-center">
-          <h1>Leaderboard</h1>
-        </header>
-        <div className="text-center buttons">
-          <Age></Age>
-          <Name></Name>
-          <Points></Points>
-          <Rank></Rank>
-        </div>
-        <div className="text-center buttons">
-          <Table></Table>
-        </div>
-      </div>
+        
+          <div className="text-center buttons">
+            <header className="text-center">
+              <h1>Leaderboard</h1>
+            </header>
+            <div className="text-center buttons">
+              <Age sortedBy={this.sortedBy} />
+              <Name sortedBy ={this.sortedBy} />
+              <Points sortedBy ={this.sortedBy}/>
+              <Rank sortedBy ={this.sortedBy} />
+            </div>
+            <div className="text-center buttons">
+              <Table altered={this.state.sortBy}/>
+            </div>
+          </div>
     );
   }
 }
