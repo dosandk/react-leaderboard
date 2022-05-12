@@ -1,4 +1,4 @@
-export const userData = [{
+export const usersJSON = [{
     "rank": 3,
     "points": 3123,
     "name": "Marlana J. Huff",
